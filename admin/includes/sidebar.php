@@ -5,8 +5,8 @@ $isContentPage = in_array($currentPage, $contentPages);
 
 // Load site identity for branding
 if (!isset($site)) {
-    require_once dirname(__DIR__) . '/config/database.php';
-    require_once dirname(__DIR__) . '/config/identity.php';
+    require_once __DIR__ . '/../../config/database.php';
+    require_once __DIR__ . '/../../config/identity.php';
     $sidePdo = getDatabaseConnection();
     $site = getSiteIdentity($sidePdo);
 }
