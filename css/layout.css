@@ -183,7 +183,17 @@
 
 @media (max-width: 500px) {
     .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* About section full width */
+    .footer-grid .footer-about {
+        grid-column: 1 / -1;
+    }
+
+    /* Contact section full width */
+    .footer-grid .footer-col:last-child {
+        grid-column: 1 / -1;
     }
 
     .footer-main {

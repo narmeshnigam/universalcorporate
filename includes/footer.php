@@ -10,15 +10,6 @@
                     <p><?php echo htmlspecialchars($site['site_description'] ?? ''); ?></p>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
                     <h4>Our Services</h4>
                     <ul>
                         <li>Office Supplies</li>
@@ -26,6 +17,15 @@
                         <li>Pantry Essentials</li>
                         <li>School Supplies</li>
                         <li>Housekeeping Items</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

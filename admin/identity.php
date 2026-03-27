@@ -12,38 +12,51 @@ $message = '';
 $messageType = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fields = [
-        'site_name', 'site_tagline', 'site_description',
-        'phone', 'phone_raw', 'whatsapp',
-        'email', 'address', 'working_hours'
-    ];
-
+    $action = $_POST['action'] ?? '';
+    
     $stmt = $pdo->prepare("INSERT INTO site_identity (setting_key, setting_value) VALUES (?, ?)
         ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)");
 
-    foreach ($fields as $key) {
-        $val = trim($_POST[$key] ?? '');
-        $stmt->execute([$key, $val]);
-    }
+    if ($action === 'save_branding') {
+        $fields = ['site_name', 'site_tagline', 'site_description'];
+        
+        foreach ($fields as $key) {
+            $val = trim($_POST[$key] ?? '');
+            $stmt->execute([$key, $val]);
+        }
 
-    // Handle logo upload
-    $logoFile = $_FILES['logo'] ?? null;
-    if ($logoFile && $logoFile['error'] === UPLOAD_ERR_OK) {
-        $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'];
-        if (in_array($logoFile['type'], $allowed) && $logoFile['size'] <= 2 * 1024 * 1024) {
-            $baseDir = dirname(__DIR__);
-            $uploadDir = $baseDir . '/assets/branding/';
-            if (!is_dir($uploadDir)) @mkdir($uploadDir, 0777, true);
-            $ext = strtolower(pathinfo($logoFile['name'], PATHINFO_EXTENSION));
-            $filename = 'logo_' . time() . '.' . $ext;
-            if (move_uploaded_file($logoFile['tmp_name'], $uploadDir . $filename)) {
-                $stmt->execute(['logo_path', 'assets/branding/' . $filename]);
+        // Handle logo upload
+        $logoFile = $_FILES['logo'] ?? null;
+        if ($logoFile && $logoFile['error'] === UPLOAD_ERR_OK) {
+            $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'];
+            if (in_array($logoFile['type'], $allowed) && $logoFile['size'] <= 2 * 1024 * 1024) {
+                $baseDir = dirname(__DIR__);
+                $uploadDir = $baseDir . '/assets/branding/';
+                if (!is_dir($uploadDir)) @mkdir($uploadDir, 0777, true);
+                $ext = strtolower(pathinfo($logoFile['name'], PATHINFO_EXTENSION));
+                $filename = 'logo_' . time() . '.' . $ext;
+                if (move_uploaded_file($logoFile['tmp_name'], $uploadDir . $filename)) {
+                    $stmt->execute(['logo_path', 'assets/branding/' . $filename]);
+                }
             }
         }
+
+        $message = 'Branding updated successfully.';
+        $messageType = 'success';
     }
 
-    $message = 'Identity updated successfully.';
-    $messageType = 'success';
+    if ($action === 'save_contact') {
+        $fields = ['phone', 'phone_raw', 'whatsapp', 'email', 'address', 'working_hours'];
+        
+        foreach ($fields as $key) {
+            $val = trim($_POST[$key] ?? '');
+            $stmt->execute([$key, $val]);
+        }
+
+        $message = 'Contact information updated successfully.';
+        $messageType = 'success';
+    }
+
     $site = getSiteIdentity($pdo);
 }
 
@@ -64,6 +77,7 @@ include 'includes/sidebar.php';
     <div class="dashboard-section" style="margin-bottom: 30px;">
         <h2>Branding</h2>
         <form method="POST" enctype="multipart/form-data" class="slider-form">
+            <input type="hidden" name="action" value="save_branding">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Site Name <span class="required">*</span></label>
@@ -98,6 +112,7 @@ include 'includes/sidebar.php';
     <div class="dashboard-section">
         <h2>Contact Information</h2>
         <form method="POST" class="slider-form">
+            <input type="hidden" name="action" value="save_contact">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Phone (display format)</label>
