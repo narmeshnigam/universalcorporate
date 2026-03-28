@@ -1,7 +1,5 @@
 <?php
 $currentPage = basename($_SERVER['PHP_SELF']);
-$contentPages = ['slider.php', 'services.php', 'clients.php', 'brands.php', 'cta-banner.php', 'faqs.php'];
-$isContentPage = in_array($currentPage, $contentPages);
 
 // Load site identity for branding
 if (!isset($site)) {
@@ -17,7 +15,7 @@ if (!isset($site)) {
             <img src="../<?php echo htmlspecialchars($site['logo_path']); ?>" alt="<?php echo htmlspecialchars($site['site_name']); ?>">
             <div class="sidebar-brand-text">
                 <span class="sidebar-brand-name"><?php echo htmlspecialchars($site['site_name']); ?></span>
-                <span class="sidebar-brand-sub">Admin Panel</span>
+                <span class="sidebar-brand-sub">User Panel</span>
             </div>
         </a>
     </div>
@@ -25,23 +23,11 @@ if (!isset($site)) {
         <a href="index.php" class="nav-item <?php echo $currentPage == 'index.php' ? 'active' : ''; ?>">
             <span class="nav-text">Dashboard</span>
         </a>
-        <a href="identity.php" class="nav-item <?php echo $currentPage == 'identity.php' ? 'active' : ''; ?>">
-            <span class="nav-text">Identity</span>
+        <a href="place-order.php" class="nav-item <?php echo $currentPage == 'place-order.php' ? 'active' : ''; ?>">
+            <span class="nav-text">Place Order</span>
         </a>
-        <a href="content.php" class="nav-item <?php echo $currentPage == 'content.php' || $isContentPage ? 'active' : ''; ?>">
-            <span class="nav-text">Content Management</span>
-        </a>
-        <a href="products.php" class="nav-item <?php echo $currentPage == 'products.php' ? 'active' : ''; ?>">
-            <span class="nav-text">Products</span>
-        </a>
-        <a href="orders.php" class="nav-item <?php echo $currentPage == 'orders.php' ? 'active' : ''; ?>">
-            <span class="nav-text">Orders</span>
-        </a>
-        <a href="email-settings.php" class="nav-item <?php echo $currentPage == 'email-settings.php' ? 'active' : ''; ?>">
-            <span class="nav-text">Email Settings</span>
-        </a>
-        <a href="enquiries.php" class="nav-item <?php echo $currentPage == 'enquiries.php' ? 'active' : ''; ?>">
-            <span class="nav-text">Enquiries</span>
+        <a href="my-orders.php" class="nav-item <?php echo $currentPage == 'my-orders.php' ? 'active' : ''; ?>">
+            <span class="nav-text">My Orders</span>
         </a>
     </nav>
     <div class="sidebar-footer">

@@ -42,6 +42,19 @@
     color: #3498db;
 }
 
+.nav-links .btn-login {
+    background: #3498db;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-links .btn-login:hover {
+    background: #2980b9;
+    color: #fff;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -268,6 +281,14 @@
         border-bottom: none;
     }
 
+    .nav-links .btn-login {
+        background: #3498db;
+        color: #fff;
+        margin: 10px 5%;
+        border-radius: 5px;
+        text-align: center;
+    }
+
     .hero h1 {
         font-size: 2rem;
     }
@@ -298,6 +319,11 @@
     gap: 15px;
 }
 
+/* Hide duplicate items on desktop */
+.feature-item[aria-hidden="true"] {
+    display: none;
+}
+
 .feature-item {
     display: flex;
     align-items: center;
@@ -319,15 +345,21 @@
 }
 
 @media (max-width: 1024px) {
-    .features-strip-inner {
-        overflow-x: auto;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+    .features-strip {
+        overflow: hidden;
     }
-    
-    .features-strip-inner::-webkit-scrollbar {
-        display: none;
+
+    /* Show duplicate items for marquee on mobile/tablet */
+    .feature-item[aria-hidden="true"] {
+        display: flex;
+    }
+
+    .features-strip-inner {
+        justify-content: flex-start;
+        animation: marquee 20s linear infinite;
+        width: max-content;
+        gap: 40px;
+        padding: 0 20px;
     }
     
     .feature-item {
@@ -335,7 +367,21 @@
     }
 }
 
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
 @media (max-width: 768px) {
+    .features-strip-inner {
+        animation-duration: 15s;
+        gap: 30px;
+    }
+
     .feature-item svg {
         width: 24px;
         height: 24px;

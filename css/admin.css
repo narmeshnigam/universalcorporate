@@ -674,3 +674,114 @@ body {
 .activity-card ul li {
     margin-bottom: 6px;
 }
+
+
+/* Enquiry Filter Form */
+.enquiry-filter-form {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.enquiry-filter-form .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.enquiry-filter-form .filter-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.enquiry-filter-form .filter-field.filter-search {
+    flex: none;
+    min-width: 200px;
+}
+
+.enquiry-filter-form .filter-field label {
+    font-size: 12px;
+    color: #555;
+    font-weight: 500;
+}
+
+.enquiry-filter-form .filter-field input[type="text"] {
+    width: 100%;
+    min-width: 120px;
+}
+
+.enquiry-filter-form .filter-field input,
+.enquiry-filter-form .filter-field select {
+    padding: 7px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    background: #fff;
+}
+
+.enquiry-filter-form .filter-field input[type="date"] {
+    width: 130px;
+}
+
+.enquiry-filter-form .filter-field select {
+    width: 90px;
+}
+
+.enquiry-filter-form .filter-field input:focus,
+.enquiry-filter-form .filter-field select:focus {
+    outline: none;
+    border-color: #4a6cf7;
+}
+
+.enquiry-filter-form .filter-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.enquiry-filter-form .btn-filter,
+.enquiry-filter-form .btn-clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.enquiry-filter-form .btn-filter {
+    background: #4a6cf7;
+    color: #fff;
+}
+
+.enquiry-filter-form .btn-filter:hover {
+    background: #3a5ce5;
+}
+
+.enquiry-filter-form .btn-clear {
+    background: #6c757d;
+    color: #fff;
+}
+
+.enquiry-filter-form .btn-clear:hover {
+    background: #5a6268;
+}
+
+@media (max-width: 900px) {
+    .enquiry-filter-form .filter-row {
+        flex-wrap: wrap;
+    }
+    
+    .enquiry-filter-form .filter-field.filter-search {
+        width: 100%;
+        flex: none;
+    }
+}

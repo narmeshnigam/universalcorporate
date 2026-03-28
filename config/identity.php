@@ -18,6 +18,12 @@ function getSiteIdentity($pdo) {
         'address' => '123 Business Avenue, New Delhi, India',
         'working_hours' => 'Mon - Sat: 9:00 AM - 6:00 PM',
         'logo_path' => 'assets/branding/default_logo.png',
+        'legal_company_name' => 'Universal Corporate Private Limited',
+        'legal_address' => '123 Business Avenue, New Delhi, India - 110001',
+        'legal_email' => 'legal@universalcorporate.com',
+        'legal_phone' => '+91 12345 67890',
+        'legal_gstin' => '',
+        'legal_pan' => '',
     ];
 
     if (!$pdo) return $defaults;

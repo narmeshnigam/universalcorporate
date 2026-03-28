@@ -16,6 +16,15 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_email (email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Create site_users table for user panel authentication
+CREATE TABLE IF NOT EXISTS site_users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Grant privileges (adjust username/host as needed)
 -- GRANT ALL PRIVILEGES ON universal_corporate.* TO 'root'@'localhost';
 -- FLUSH PRIVILEGES;

@@ -92,6 +92,31 @@ include 'includes/header.php';
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
                     <span>Easy Returns</span>
                 </div>
+                <!-- Duplicate for seamless marquee loop -->
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 8h12M6 3v5M18 3v5M8 8v13l4-3 4 3V8M8 8c0-1 .5-2 2-2h4c1.5 0 2 1 2 2"></path></svg>
+                    <span>Affordable Price</span>
+                </div>
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Large Variety</span>
+                </div>
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    <span>Premium Quality</span>
+                </div>
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                    <span>Great Discounts</span>
+                </div>
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    <span>Timely Delivery</span>
+                </div>
+                <div class="feature-item" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                    <span>Easy Returns</span>
+                </div>
             </div>
         </section>
 
@@ -270,8 +295,8 @@ include 'includes/header.php';
 
         <section id="contact" class="section">
             <?php
-            $enquiryHeading = 'Let\'s Work Together';
-            $enquiryMessage = 'Ready to take your business to the next level? Drop us a message and our team will get back to you shortly.';
+            $enquiryHeading = 'Get a Quote';
+            $enquiryMessage = 'Need supplies for your office, school, or institution? Share your requirements and we\'ll get back to you with the best prices.';
             include 'includes/enquiry-form.php';
             ?>
         </section>

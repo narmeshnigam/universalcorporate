@@ -3,7 +3,6 @@
 .enquiry-form-container {
     width: 100%;
     padding: 0;
-    max-height: 70vh;
 }
 
 .enquiry-form-wrapper {
@@ -19,7 +18,7 @@
 
 /* Left Side - CTA Section */
 .enquiry-cta {
-    padding: 30px 30px;
+    padding: 50px 40px;
     background: #2c3e50;
     color: white;
     display: flex;
@@ -28,38 +27,38 @@
 }
 
 .enquiry-cta h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 16px;
     font-weight: 700;
     line-height: 1.2;
     color: #fff;
 }
 
 .enquiry-cta > p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
     opacity: 0.9;
 }
 
 .cta-features {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
 }
 
 .cta-feature {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
+    gap: 12px;
+    font-size: 0.95rem;
 }
 
 .cta-feature svg {
     flex-shrink: 0;
     opacity: 0.85;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
 
 .cta-feature span {
@@ -190,29 +189,48 @@
     }
 
     .enquiry-cta {
-        padding: 24px 22px;
+        padding: 40px 30px;
+        text-align: center;
+    }
+
+    .enquiry-cta h2 {
+        font-size: 1.75rem;
+    }
+
+    .cta-features {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .enquiry-form-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .enquiry-cta {
+        padding: 35px 25px;
     }
 
     .enquiry-cta h2 {
         font-size: 1.5rem;
     }
 
-    .enquiry-form-section {
-        padding: 24px 22px;
-    }
-}
-
-@media (max-width: 640px) {
-    .enquiry-cta {
-        padding: 20px 18px;
+    .enquiry-cta > p {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
     }
 
-    .enquiry-cta h2 {
-        font-size: 1.3rem;
+    .cta-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
     }
 
     .enquiry-form-section {
-        padding: 20px 18px;
+        padding: 25px 20px;
     }
 
     .form-row {

@@ -57,6 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messageType = 'success';
     }
 
+    if ($action === 'save_legal') {
+        $fields = ['legal_company_name', 'legal_address', 'legal_email', 'legal_phone', 'legal_gstin', 'legal_pan'];
+        
+        foreach ($fields as $key) {
+            $val = trim($_POST[$key] ?? '');
+            $stmt->execute([$key, $val]);
+        }
+
+        $message = 'Legal information updated successfully.';
+        $messageType = 'success';
+    }
+
     $site = getSiteIdentity($pdo);
 }
 
@@ -143,6 +155,47 @@ include 'includes/sidebar.php';
                 <input type="text" name="working_hours" value="<?php echo htmlspecialchars($site['working_hours']); ?>" placeholder="e.g. Mon - Sat: 9:00 AM - 6:00 PM">
             </div>
             <button type="submit" class="btn-primary">Save Contact Info</button>
+        </form>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Legal Information</h2>
+        <p style="color: #7f8c8d; margin-bottom: 20px; font-size: 14px;">This information will be used on invoices and legal documents.</p>
+        <form method="POST" class="slider-form">
+            <input type="hidden" name="action" value="save_legal">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Legal Company Name <span class="required">*</span></label>
+                    <input type="text" name="legal_company_name" value="<?php echo htmlspecialchars($site['legal_company_name'] ?? ''); ?>" required>
+                    <small>Official registered company name</small>
+                </div>
+                <div class="form-group">
+                    <label>Legal Email Address <span class="required">*</span></label>
+                    <input type="email" name="legal_email" value="<?php echo htmlspecialchars($site['legal_email'] ?? ''); ?>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Legal Address (Single Line) <span class="required">*</span></label>
+                <input type="text" name="legal_address" value="<?php echo htmlspecialchars($site['legal_address'] ?? ''); ?>" required>
+                <small>Complete registered address in one line</small>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Legal Phone Number <span class="required">*</span></label>
+                    <input type="text" name="legal_phone" value="<?php echo htmlspecialchars($site['legal_phone'] ?? ''); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>GSTIN</label>
+                    <input type="text" name="legal_gstin" value="<?php echo htmlspecialchars($site['legal_gstin'] ?? ''); ?>" placeholder="e.g. 22AAAAA0000A1Z5">
+                    <small>Goods and Services Tax Identification Number</small>
+                </div>
+                <div class="form-group">
+                    <label>PAN</label>
+                    <input type="text" name="legal_pan" value="<?php echo htmlspecialchars($site['legal_pan'] ?? ''); ?>" placeholder="e.g. AAAAA0000A">
+                    <small>Permanent Account Number</small>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary">Save Legal Info</button>
         </form>
     </div>
 </main>
