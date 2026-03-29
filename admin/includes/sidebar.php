@@ -29,13 +29,16 @@ if (!isset($site)) {
             <span class="nav-text">Identity</span>
         </a>
         <a href="content.php" class="nav-item <?php echo $currentPage == 'content.php' || $isContentPage ? 'active' : ''; ?>">
-            <span class="nav-text">Content Management</span>
+            <span class="nav-text">Content</span>
         </a>
         <a href="products.php" class="nav-item <?php echo $currentPage == 'products.php' ? 'active' : ''; ?>">
             <span class="nav-text">Products</span>
         </a>
         <a href="orders.php" class="nav-item <?php echo $currentPage == 'orders.php' ? 'active' : ''; ?>">
             <span class="nav-text">Orders</span>
+        </a>
+        <a href="users.php" class="nav-item <?php echo $currentPage == 'users.php' || $currentPage == 'user-details.php' ? 'active' : ''; ?>">
+            <span class="nav-text">Site Users</span>
         </a>
         <a href="email-settings.php" class="nav-item <?php echo $currentPage == 'email-settings.php' ? 'active' : ''; ?>">
             <span class="nav-text">Email Settings</span>

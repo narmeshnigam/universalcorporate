@@ -28,6 +28,25 @@
     width: auto;
 }
 
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.logo-tagline {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #7f8c8d;
+    letter-spacing: 0.3px;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -121,11 +140,31 @@
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 16px;
+    text-decoration: none;
 }
 
 .footer-logo-img {
     height: 32px;
     width: auto;
+}
+
+.footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.footer-logo-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-logo-tagline {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 0.3px;
 }
 
 .footer-about p {
@@ -422,6 +461,24 @@
     line-height: 1.8;
 }
 
+.about-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 32px;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.about-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
     .about-section {
         height: auto;
@@ -435,6 +492,11 @@
     
     .about-content p {
         font-size: 1rem;
+    }
+    
+    .about-btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
     }
 }
 
@@ -767,14 +829,6 @@
     height: 50px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: filter 0.3s, opacity 0.3s;
-}
-
-.clients-track img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
 }
 
 @media (max-width: 768px) {

@@ -69,6 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messageType = 'success';
     }
 
+    if ($action === 'save_about') {
+        $fields = ['about_heading', 'about_content', 'about_button_text', 'about_button_link'];
+        
+        foreach ($fields as $key) {
+            $val = trim($_POST[$key] ?? '');
+            $stmt->execute([$key, $val]);
+        }
+
+        $message = 'About section updated successfully.';
+        $messageType = 'success';
+    }
+
     $site = getSiteIdentity($pdo);
 }
 
@@ -196,6 +208,35 @@ include 'includes/sidebar.php';
                 </div>
             </div>
             <button type="submit" class="btn-primary">Save Legal Info</button>
+        </form>
+    </div>
+
+    <div class="dashboard-section" style="margin-top: 30px;">
+        <h2>About Section</h2>
+        <p style="color: #7f8c8d; margin-bottom: 20px; font-size: 14px;">Configure the About section content displayed on the homepage.</p>
+        <form method="POST" class="slider-form">
+            <input type="hidden" name="action" value="save_about">
+            <div class="form-group">
+                <label>Heading <span class="required">*</span></label>
+                <input type="text" name="about_heading" value="<?php echo htmlspecialchars($site['about_heading'] ?? 'Your Trusted Partner for Daily Supplies'); ?>" required>
+            </div>
+            <div class="form-group">
+                <label>Content <span class="required">*</span></label>
+                <textarea name="about_content" rows="4" required><?php echo htmlspecialchars($site['about_content'] ?? 'We provide reliable delivery of essential supplies for offices, schools, and housekeeping needs. From stationery and cleaning products to pantry essentials, we ensure your workplace runs smoothly with timely doorstep delivery and competitive pricing.'); ?></textarea>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Button Text <span class="optional">(optional)</span></label>
+                    <input type="text" name="about_button_text" value="<?php echo htmlspecialchars($site['about_button_text'] ?? ''); ?>" placeholder="e.g. Learn More">
+                    <small>Leave empty to hide the button</small>
+                </div>
+                <div class="form-group">
+                    <label>Button Link <span class="optional">(optional)</span></label>
+                    <input type="text" name="about_button_link" value="<?php echo htmlspecialchars($site['about_button_link'] ?? ''); ?>" placeholder="e.g. /about or https://example.com">
+                    <small>URL the button should navigate to</small>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary">Save About Section</button>
         </form>
     </div>
 </main>

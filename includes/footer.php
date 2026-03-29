@@ -5,7 +5,12 @@
                 <div class="footer-col footer-about">
                     <a href="index.php" class="footer-logo">
                         <img src="<?php echo htmlspecialchars($site['logo_path'] ?? 'assets/branding/default_logo.png'); ?>" alt="<?php echo htmlspecialchars($site['site_name'] ?? 'Logo'); ?>" class="footer-logo-img">
-                        <span><?php echo htmlspecialchars($site['site_name'] ?? 'Universal Corporate'); ?></span>
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-name"><?php echo htmlspecialchars($site['site_name'] ?? 'Universal Corporate'); ?></span>
+                            <?php if (!empty($site['site_tagline'])): ?>
+                            <span class="footer-logo-tagline"><?php echo htmlspecialchars($site['site_tagline']); ?></span>
+                            <?php endif; ?>
+                        </div>
                     </a>
                     <p><?php echo htmlspecialchars($site['site_description'] ?? ''); ?></p>
                 </div>

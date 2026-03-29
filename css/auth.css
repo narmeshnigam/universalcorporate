@@ -21,7 +21,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    max-height: 60vh;
+    max-height: 70vh;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -149,6 +150,15 @@
     background: #2980b9;
 }
 
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
 .btn-block {
     width: 100%;
     display: block;
@@ -183,6 +193,21 @@
     flex-shrink: 0;
 }
 
+.auth-links {
+    padding: 0 16px;
+    flex-shrink: 0;
+}
+
+.auth-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
 .auth-footer p {
     margin: 0;
     color: #7f8c8d;
@@ -207,7 +232,8 @@
     }
     
     .auth-card {
-        max-height: 60vh;
+        max-height: none;
+        height: auto;
     }
     
     .auth-header {

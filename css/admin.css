@@ -785,3 +785,201 @@ body {
         flex: none;
     }
 }
+
+
+/* Users Management Styles */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+/* Users Filter Form */
+.users-filter-form {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.users-filter-form .filter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.users-filter-form .filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+.users-filter-form .filter-field.filter-search {
+    width: 300px;
+}
+
+.users-filter-form .filter-field label {
+    font-size: 13px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.users-filter-form .filter-field input[type="text"],
+.users-filter-form .filter-field select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fff;
+    font-family: inherit;
+    height: 42px;
+    width: 100%;
+}
+
+.users-filter-form .filter-field select {
+    width: 150px;
+    cursor: pointer;
+}
+
+.users-filter-form .filter-field input:focus,
+.users-filter-form .filter-field select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.users-filter-form .filter-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.users-filter-form .btn-filter,
+.users-filter-form .btn-clear {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users-filter-form .btn-filter {
+    background: #3498db;
+    color: #fff;
+}
+
+.users-filter-form .btn-filter:hover {
+    opacity: 0.9;
+}
+
+.users-filter-form .btn-clear {
+    background: #95a5a6;
+    color: #fff;
+}
+
+.users-filter-form .btn-clear:hover {
+    opacity: 0.9;
+}
+
+
+/* Action Buttons in Table */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.action-buttons form {
+    margin: 0;
+}
+
+.action-buttons .btn-sm {
+    min-width: 70px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* User Details Page */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-item label {
+    font-weight: 600;
+    color: #7f8c8d;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-item div {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .users-filter-form .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .users-filter-form .filter-field.filter-search {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .users-filter-form .filter-field {
+        width: 100%;
+    }
+    
+    .users-filter-form .filter-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+    
+    .users-filter-form .btn-filter,
+    .users-filter-form .btn-clear {
+        flex: 1;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .action-buttons .btn-sm {
+        width: 100%;
+        text-align: center;
+    }
+}

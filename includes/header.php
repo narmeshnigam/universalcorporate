@@ -11,7 +11,12 @@
         <nav class="navbar">
             <a href="index.php" class="logo">
                 <img src="<?php echo htmlspecialchars($site['logo_path'] ?? 'assets/branding/default_logo.png'); ?>" alt="<?php echo htmlspecialchars($site['site_name'] ?? 'Logo'); ?>" class="logo-icon">
-                <span><?php echo htmlspecialchars($site['site_name'] ?? 'Universal Corporate'); ?></span>
+                <div class="logo-text">
+                    <span class="logo-name"><?php echo htmlspecialchars($site['site_name'] ?? 'Universal Corporate'); ?></span>
+                    <?php if (!empty($site['site_tagline'])): ?>
+                    <span class="logo-tagline"><?php echo htmlspecialchars($site['site_tagline']); ?></span>
+                    <?php endif; ?>
+                </div>
             </a>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger-line"></span>

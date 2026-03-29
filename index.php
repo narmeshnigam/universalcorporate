@@ -123,8 +123,11 @@ include 'includes/header.php';
         <section id="about" class="about-section">
             <div class="about-container">
                 <div class="about-content">
-                    <h2>Your Trusted Partner for Daily Supplies</h2>
-                    <p>We provide reliable delivery of essential supplies for offices, schools, and housekeeping needs. From stationery and cleaning products to pantry essentials, we ensure your workplace runs smoothly with timely doorstep delivery and competitive pricing.</p>
+                    <h2><?php echo htmlspecialchars($site['about_heading'] ?? 'Your Trusted Partner for Daily Supplies'); ?></h2>
+                    <p><?php echo htmlspecialchars($site['about_content'] ?? 'We provide reliable delivery of essential supplies for offices, schools, and housekeeping needs. From stationery and cleaning products to pantry essentials, we ensure your workplace runs smoothly with timely doorstep delivery and competitive pricing.'); ?></p>
+                    <?php if (!empty($site['about_button_text']) && !empty($site['about_button_link'])): ?>
+                    <a href="<?php echo htmlspecialchars($site['about_button_link']); ?>" class="about-btn"><?php echo htmlspecialchars($site['about_button_text']); ?></a>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>

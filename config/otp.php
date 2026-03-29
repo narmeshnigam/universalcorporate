@@ -226,24 +226,46 @@ function sendPasswordResetOTP($pdo, $email, $otpCode, $userType = 'user') {
 /**
  * Store pending registration data
  */
-function storePendingRegistration($pdo, $email, $passwordHash) {
-    // Delete any existing pending registration for this email
-    $stmt = $pdo->prepare("DELETE FROM pending_registrations WHERE email = ?");
-    $stmt->execute([$email]);
-    
-    $expiresAt = date('Y-m-d H:i:s', strtotime('+30 minutes'));
-    
-    $stmt = $pdo->prepare("INSERT INTO pending_registrations (email, password_hash, expires_at) VALUES (?, ?, ?)");
-    return $stmt->execute([$email, $passwordHash, $expiresAt]);
+function storePendingRegistration($pdo, $email, $passwordHash, $fullName = null, $mobile = null) {
+    try {
+        // Delete any existing pending registration for this email
+        $stmt = $pdo->prepare("DELETE FROM pending_registrations WHERE email = ?");
+        $stmt->execute([$email]);
+        
+        $expiresAt = date('Y-m-d H:i:s', strtotime('+30 minutes'));
+        
+        $stmt = $pdo->prepare("INSERT INTO pending_registrations (email, password_hash, full_name, mobile, expires_at) VALUES (?, ?, ?, ?, ?)");
+        $result = $stmt->execute([$email, $passwordHash, $fullName, $mobile, $expiresAt]);
+        
+        return $result;
+    } catch (Exception $e) {
+        error_log("storePendingRegistration error: " . $e->getMessage());
+        return false;
+    }
 }
 
 /**
  * Get pending registration data
  */
 function getPendingRegistration($pdo, $email) {
-    $stmt = $pdo->prepare("SELECT * FROM pending_registrations WHERE email = ? AND expires_at > NOW()");
+    $stmt = $pdo->prepare("SELECT * FROM pending_registrations WHERE email = ?");
     $stmt->execute([$email]);
-    return $stmt->fetch();
+    $result = $stmt->fetch();
+    
+    if (!$result) {
+        return false;
+    }
+    
+    // Use PHP time for comparison to avoid timezone issues
+    $now = time();
+    $expiresAt = strtotime($result['expires_at']);
+    
+    if ($now > $expiresAt) {
+        error_log("getPendingRegistration: Record expired for email: $email");
+        return false;
+    }
+    
+    return $result;
 }
 
 /**
@@ -263,8 +285,8 @@ function completePendingRegistration($pdo, $email) {
     }
     
     // Create the user account
-    $stmt = $pdo->prepare("INSERT INTO site_users (email, password) VALUES (?, ?)");
-    if ($stmt->execute([$email, $pending['password_hash']])) {
+    $stmt = $pdo->prepare("INSERT INTO site_users (email, full_name, mobile, password) VALUES (?, ?, ?, ?)");
+    if ($stmt->execute([$email, $pending['full_name'], $pending['mobile'], $pending['password_hash']])) {
         // Delete pending registration
         $stmt = $pdo->prepare("DELETE FROM pending_registrations WHERE email = ?");
         $stmt->execute([$email]);

@@ -95,6 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </form>
+            <div class="auth-links" style="text-align: center; margin-top: 15px;">
+                <a href="forgot-password.php?mode=<?php echo htmlspecialchars($mode); ?>">Forgot Password?</a>
+            </div>
             <div class="auth-footer" id="authFooter">
                 <p>Don't have an account? <a href="user/register.php">Register</a></p>
             </div>
@@ -105,9 +108,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            document.getElementById('modeInput').value = this.dataset.mode;
+            const mode = this.dataset.mode;
+            document.getElementById('modeInput').value = mode;
+            
+            // Update forgot password link
+            document.querySelector('.auth-links a').href = 'forgot-password.php?mode=' + mode;
+            
+            // Update footer
             const footer = document.getElementById('authFooter');
-            if (this.dataset.mode === 'admin') {
+            if (mode === 'admin') {
                 footer.innerHTML = '<p>Admin access only</p>';
             } else {
                 footer.innerHTML = '<p>Don\'t have an account? <a href="user/register.php">Register</a></p>';
